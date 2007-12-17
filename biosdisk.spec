@@ -10,7 +10,6 @@ License: GPL
 Group:   System/Kernel and hardware 
 URL: 	 http://linux.dell.com/biosdisk/
 Source:  http://linux.dell.com/biosdisk/%{name}-%{version}.tar.bz2
-BuildRoot: %{_tmppath}/%{name}
 BuildArch: noarch
 Requires: python >= 2.2, dos2unix, syslinux, wget
 
