@@ -1,18 +1,21 @@
 %define name biosdisk
-%define version 0.65
-%define release %mkrel 2
+%define version 0.75
+%define release %mkrel 1
 
-Summary: Creating BIOS flash floppy images for DELL machines
 Name: %{name}
 Version: %{version}
 Release: %{release}
+Summary: Creating BIOS flash floppy images for DELL machines
 License: GPL
 Group:   System/Kernel and hardware 
 URL: 	 http://linux.dell.com/biosdisk/
-Source:  http://linux.dell.com/biosdisk/%{name}-%{version}.tar.bz2
-BuildRoot: %{_tmppath}/%{name}
+Source:  http://linux.dell.com/biosdisk/%{name}-%{version}-2.tar.gz
+Requires: python >= 2.2
+Requires: dos2unix
+Requires: syslinux
+Requires: wget
 BuildArch: noarch
-Requires: python >= 2.2, dos2unix, syslinux, wget
+BuildRoot: %{_tmppath}/%{name}-%{version}
 
 %description
 Biosdisk is a utility that can be used to make a FreeDOS floppy boot image
@@ -46,6 +49,17 @@ install -m 644 biosdisk.8.gz %{buildroot}%{_mandir}/man8
 %clean
 rm -rf %{buildroot}
 
+%post
+#copy memdisk to /boot
+if ! [ -e /boot/memdisk ]; then
+    for i in /usr/lib/syslinux/memdisk /usr/share/syslinux/memdisk
+    do
+        if [ -e $i ]; then
+            cp -f $i /boot
+        fi
+    done
+fi
+
 %files
 %defattr(-,root,root,-)
 %attr(0755,root,root) %{_sbindir}/biosdisk
@@ -57,13 +71,3 @@ rm -rf %{buildroot}
 %doc %{_mandir}/man8/biosdisk.8.*
 %doc COPYING ChangeLog AUTHORS README INSTALL TODO README.dosdisk VERSION
 
-%post
-#copy memdisk to /boot
-if ! [ -e /boot/memdisk ]; then
-    for i in /usr/lib/syslinux/memdisk /usr/share/syslinux/memdisk
-    do
-        if [ -e $i ]; then
-            cp -f $i /boot
-        fi
-    done
-fi
