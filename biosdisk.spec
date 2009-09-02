@@ -1,6 +1,6 @@
 %define name biosdisk
 %define version 0.75
-%define release %mkrel 3
+%define release %mkrel 4
 
 Name: %{name}
 Version: %{version}
