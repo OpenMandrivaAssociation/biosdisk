@@ -8,7 +8,7 @@ URL: 	 http://linux.dell.com/biosdisk/
 Source:  https://github.com/dell/biosdisk/archive/%{version}/%{name}-%{version}.tar.gz
 Requires: python
 Requires: dos2unix
-Requires: syslinux
+Recommends: syslinux
 Requires: wget
 BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}
