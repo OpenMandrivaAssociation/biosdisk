@@ -1,5 +1,5 @@
 Name: biosdisk
-Version: 1.0.1
+Version: 1.01
 Release: 1
 Summary: Creating BIOS flash floppy images for DELL machines
 License: GPL
