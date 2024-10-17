@@ -4,7 +4,7 @@ Release: 1
 Summary: Creating BIOS flash floppy images for DELL machines
 License: GPL
 Group:   System/Kernel and hardware 
-URL: 	 http://linux.dell.com/biosdisk/
+URL: 	 https://linux.dell.com/biosdisk/
 Source:  https://github.com/dell/biosdisk/archive/%{version}/%{name}-%{version}.tar.gz
 Requires: python
 Requires: dos2unix
